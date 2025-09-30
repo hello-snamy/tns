@@ -11,6 +11,7 @@ backend:
 media_folder: "src/images"
 public_folder: "/images"
 
+# Add these fields to your news collection
 collections:
   - name: "news"
     label: "News Articles"
@@ -23,6 +24,14 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "image", widget: "image" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Social Media"
+        name: "social"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Social Media Title", name: "social_title", widget: "string", required: false }
+          - { label: "Social Media Description", name: "social_description", widget: "text", required: false }
+          - { label: "Social Media Image", name: "social_image", widget: "image", required: false }
       - label: "Categories"
         name: "categories"
         widget: "select"
@@ -35,13 +44,6 @@ collections:
           - { label: "వ్యవసాయం", value: "agriculture" }
           - { label: "సినిమా", value: "cinema" }
           - { label: "వ్యాపారం", value: "business" }
-      - label: "SEO"
-        name: "seo"
-        widget: "object"
-        fields:
-          - { label: "Meta Title", name: "meta_title", widget: "string", required: false }
-          - { label: "Meta Description", name: "meta_description", widget: "text", required: false }
-          - { label: "Keywords", name: "keywords", widget: "string", required: false }
 
   - name: "pages"
     label: "Pages"
