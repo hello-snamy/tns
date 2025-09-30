@@ -44,6 +44,17 @@ collections:
           - { label: "వ్యవసాయం", value: "agriculture" }
           - { label: "సినిమా", value: "cinema" }
           - { label: "వ్యాపారం", value: "business" }
+      - label: "Marketing"
+        name: "marketing"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Featured Article", name: "featured", widget: "boolean", default: false }
+          - { label: "Trending Article", name: "trending", widget: "boolean", default: false }
+          - { label: "Breaking News", name: "breaking", widget: "boolean", default: false }
+          - { label: "Exclusive Content", name: "exclusive", widget: "boolean", default: false }
+          - { label: "Sponsored Content", name: "sponsored", widget: "boolean", default: false }
+          - { label: "Ad Campaign ID", name: "ad_campaign", widget: "string", required: false }
 
   - name: "pages"
     label: "Pages"
