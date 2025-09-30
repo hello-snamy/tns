@@ -6,7 +6,7 @@ layout: base
     <header class="article-header">
         <h1 class="article-title">{{ title }}</h1>
         <div class="article-meta">
-            <time datetime="{{ date | date: '%Y-%m-%d' }}">{{ date | date: "%d %B, %Y" }}</time>
+            <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
             {% if categories %}
             <span class="categories">
                 {% for category in categories %}
