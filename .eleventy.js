@@ -31,6 +31,19 @@ module.exports = function(eleventyConfig) {
         return collection.getFilteredByGlob("src/_posts/*.md");
     });
 
+    // Add this filter for absolute URLs
+    eleventyConfig.addFilter("absoluteUrl", (url) => {
+        const siteUrl = "https://telugu-news-app.netlify.app";
+        return new URL(url, siteUrl).toString();
+    });
+    
+    // Add social media specific collections
+    eleventyConfig.addCollection("popularNews", function(collection) {
+        return collection.getFilteredByGlob("src/_posts/*.md")
+            .filter(item => item.data.categories && item.data.categories.includes('featured'))
+            .slice(0, 5);
+    });
+
     return {
         dir: {
             input: "src",
