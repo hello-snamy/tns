@@ -9,7 +9,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(pluginSEO, {
         title: "తెలుగు వార్తలు",
         description: "తాజా తెలుగు వార్తలు, బ్రేకింగ్ న్యూస్",
-        url: "https://your-site.netlify.app",
+        url: "https://telugu-news-app.netlify.app",
         author: "Telugu News Team",
         twitter: "telugunews",
         image: "/images/og-image.jpg"
@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPlugin(sitemap, {
         sitemap: {
-            hostname: "https://your-site.netlify.app",
+            hostname: "https://telugu-news-app.netlify.app",
         },
     });
 
