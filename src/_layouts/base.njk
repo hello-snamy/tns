@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - తెలుగు వార్తలు</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .header { background: #2c5aa0; color: white; padding: 1rem; }
+        .main-content { padding: 2rem; }
+        .footer { background: #333; color: white; padding: 1rem; text-align: center; }
+        .hero { background: #f0f8ff; padding: 3rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>తెలుగు వార్తలు</h1>
+        <nav>
+            <a href="/" style="color: white;">హోమ్</a> | 
+            <a href="/admin/" style="color: white;">అడ్మిన్</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 తెలుగు వార్తలు. అన్ని హక్కులు రక్షించబడినవి.</p>
+    </footer>
+</body>
+</html>
