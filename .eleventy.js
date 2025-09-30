@@ -32,6 +32,16 @@ module.exports = function(eleventyConfig) {
         return collection.getFilteredByGlob("src/_posts/*.md");
     });
 
+    // Add custom filters
+    eleventyConfig.addFilter("isoDate", function(date) {
+        return date.toISOString().split('T')[0];
+    });
+    
+    eleventyConfig.addFilter("readableDate", function(date) {
+        const options = { day: 'numeric', month: 'long', year: 'numeric' };
+        return date.toLocaleDateString('te-IN', options);
+    });
+
     // Add this filter for absolute URLs
     eleventyConfig.addFilter("absoluteUrl", (url) => {
         const siteUrl = "https://telugu-news-app.netlify.app";
