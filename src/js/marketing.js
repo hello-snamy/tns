@@ -85,9 +85,9 @@ class MarketingManager {
         return re.test(email);
     }
 
+    // In the subscribeNewsletter method, replace with:
     async subscribeNewsletter(email) {
         try {
-            // Replace with your newsletter service endpoint
             const response = await fetch('/.netlify/functions/newsletter', {
                 method: 'POST',
                 headers: {
@@ -95,20 +95,24 @@ class MarketingManager {
                 },
                 body: JSON.stringify({ email })
             });
-
+    
+            const data = await response.json();
+    
             if (response.ok) {
-                this.showMessage('వార్తాలేఖకు చందా పూర్తి అయ్యింది! ధన్యవాదాలు.', 'success');
+                this.showMessage(data.message, 'success');
                 this.trackEvent('newsletter_subscription', { email });
                 
                 // Reset form
-                document.querySelector('.newsletter-input').value = '';
+                const newsletterInput = document.querySelector('.newsletter-input');
+                if (newsletterInput) newsletterInput.value = '';
             } else {
-                throw new Error('Subscription failed');
+                throw new Error(data.error || 'Subscription failed');
             }
         } catch (error) {
-            this.showMessage('దయచేసి మళ్లీ ప్రయత్నించండి', 'error');
+            this.showMessage(error.message || 'దయచేసి మళ్లీ ప్రయత్నించండి', 'error');
         }
     }
+
 
     // Push Notifications
     setupPushNotifications() {
