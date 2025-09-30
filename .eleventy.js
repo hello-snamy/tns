@@ -44,10 +44,10 @@ module.exports = function(eleventyConfig) {
 
     // Add this filter for absolute URLs
     eleventyConfig.addFilter("absoluteUrl", (url) => {
-        const siteUrl = "https://telugu-news-app.netlify.app";
+        const siteUrl = process.env.URL || "https://your-site.netlify.app";
         return new URL(url, siteUrl).toString();
     });
-    
+
     // Add social media specific collections
     eleventyConfig.addCollection("popularNews", function(collection) {
         return collection.getFilteredByGlob("src/_posts/*.md")
@@ -63,7 +63,7 @@ module.exports = function(eleventyConfig) {
             layouts: "_layouts",
             data: "_data"
         },
-        templateFormats: ["md", "njk", "html"],
+        templateFormats: ["md", "njk", "html", "liquid"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
         dataTemplateEngine: "njk"
