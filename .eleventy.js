@@ -41,7 +41,12 @@ module.exports = function(eleventyConfig) {
         const options = { day: 'numeric', month: 'long', year: 'numeric' };
         return date.toLocaleDateString('te-IN', options);
     });
-
+    
+    eleventyConfig.addFilter("truncate", function(str, length) {
+        if (!str) return '';
+        if (str.length <= length) return str;
+        return str.substring(0, length) + '...';
+    });    
     // Add this filter for absolute URLs
     eleventyConfig.addFilter("absoluteUrl", (url) => {
         const siteUrl = process.env.URL || "https://your-site.netlify.app";
@@ -53,6 +58,19 @@ module.exports = function(eleventyConfig) {
         return collection.getFilteredByGlob("src/_posts/*.md")
             .filter(item => item.data.categories && item.data.categories.includes('featured'))
             .slice(0, 5);
+    });
+
+  // Category collections
+    eleventyConfig.addCollection("stateNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("state");
+        });
+    });
+    
+    eleventyConfig.addCollection("nationalNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("national");
+        });
     });
 
     return {
