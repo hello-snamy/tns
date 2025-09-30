@@ -1,0 +1,52 @@
+---
+layout: base
+title: రాష్ట్ర వార్తలు
+description: ఆంధ్రప్రదేశ్ & తెలంగాణ తాజా వార్తలు
+permalink: /categories/state/
+pagination:
+  data: collections.news
+  size: 10
+  alias: posts
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+---
+
+<section class="category-header">
+    <div class="container">
+        <h1>రాష్ట్ర వార్తలు</h1>
+        <p>ఆంధ్రప్రదేశ్ & తెలంగాణ తాజా వార్తలు</p>
+    </div>
+</section>
+
+<section class="category-news">
+    <div class="container">
+        <div class="news-grid">
+            {% for post in collections.news %}
+                {% if "state" in post.data.categories %}
+                <article class="news-card">
+                    {% if post.data.image %}
+                    <div class="news-image">
+                        <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy">
+                    </div>
+                    {% endif %}
+                    <div class="news-content">
+                        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                        <p class="news-excerpt">{{ post.data.description }}</p>
+                        <div class="news-meta">
+                            <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+                        </div>
+                    </div>
+                </article>
+                {% endif %}
+            {% else %}
+            <div class="no-news">
+                <h3>ఈ వర్గంలో ఇంకా వార్తలు లేవు</h3>
+                <p>మొదటి వార్తను సేర్చడానికి <a href="/admin/">అడ్మిన్ పేజీ</a>కి వెళ్లండి</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
