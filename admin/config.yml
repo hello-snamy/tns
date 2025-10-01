@@ -1,13 +1,8 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: hello-snamy/tns
   branch: main
-  commit_messages:
-    create: 'Create {{collection}} "{{slug}}"'
-    update: 'Update {{collection}} "{{slug}}"'
-    delete: 'Delete {{collection}} "{{slug}}"'
-    uploadMedia: 'Upload "{{path}}"'
-    deleteMedia: 'Delete "{{path}}"'
-
+  base_url: https://hello-snamy.github.io/tns
 media_folder: "src/images"
 public_folder: "/images"
 
