@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPlugin(sitemap, {
         sitemap: {
-            hostname: https://hello-snamy.github.io/tns"",
+            hostname: "https://hello-snamy.github.io/tns",
         },
     });
 
