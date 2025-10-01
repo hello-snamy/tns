@@ -50,6 +50,14 @@ collections:
           - { label: "Exclusive Content", name: "exclusive", widget: "boolean", default: false }
           - { label: "Sponsored Content", name: "sponsored", widget: "boolean", default: false }
           - { label: "Ad Campaign ID", name: "ad_campaign", widget: "string", required: false }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Meta Title", name: "meta_title", widget: "string", required: false }
+          - { label: "Meta Description", name: "meta_description", widget: "text", required: false }
+          - { label: "Keywords", name: "keywords", widget: "string", required: false }
+
 
   - name: "pages"
     label: "Pages"
