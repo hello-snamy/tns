@@ -38,6 +38,7 @@
     <meta property="og:image" content="{{ image | absoluteUrl }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
     {% else %}
     <meta property="og:image" content="{{ '/images/og-default.jpg' | absoluteUrl }}">
     {% endif %}
@@ -46,7 +47,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}">
     <meta name="twitter:description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ description }}{% endif %}">
-    
+    <meta name="twitter:site" content="@TeluguNews">
+    <meta name="twitter:creator" content="@TeluguNews">
+
     {% if image %}
     <meta name="twitter:image" content="{{ image | absoluteUrl }}">
     {% else %}
@@ -95,7 +98,8 @@
         {% endif %}
     }
     </script>
-    
+
+
     <!-- Facebook App ID (Optional) -->
     <meta property="fb:app_id" content="YOUR_FACEBOOK_APP_ID">
 
