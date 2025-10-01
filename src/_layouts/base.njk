@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="te" prefix="og: http://ogp.me/ns#">
+<html lang="te" data-bs-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
-    <!-- End Google Tag Manager -->
-    
     <title>{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %} - తెలుగు వార్తలు</title>
     <meta name="description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ description }}{% endif %}">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/social-share.css">
+    <link rel="stylesheet" href="/css/marketing.css">
     
     <!-- SEO Meta Tags -->
     <meta name="keywords" content="{% if keywords %}{{ keywords }}{% else %}తెలుగు వార్తలు, తాజా వార్తలు, ఆంధ్రప్రదేశ్, తెలంగాణ, బ్రేకింగ్ న్యూస్{% endif %}">
@@ -32,7 +32,6 @@
     <meta property="og:image" content="{{ image | absoluteUrl }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:type" content="image/jpeg">
     {% else %}
     <meta property="og:image" content="{{ '/images/og-default.jpg' | absoluteUrl }}">
     {% endif %}
@@ -41,8 +40,6 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}">
     <meta name="twitter:description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ description }}{% endif %}">
-    <meta name="twitter:site" content="@TeluguNews">
-    <meta name="twitter:creator" content="@TeluguNews">
     
     {% if image %}
     <meta name="twitter:image" content="{{ image | absoluteUrl }}">
@@ -50,6 +47,13 @@
     <meta name="twitter:image" content="{{ '/images/twitter-default.jpg' | absoluteUrl }}">
     {% endif %}
     
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -92,53 +96,178 @@
     <!-- WhatsApp Specific -->
     <meta property="og:image:alt" content="{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}">
 
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/social-share.css">
-    <link rel="stylesheet" href="/css/marketing.css">
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <a href="/">తెలుగు వార్తలు</a>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="/">హోమ్</a></li>
-                    <li><a href="/categories/state/">రాష్ట్ర వార్తలు</a></li>
-                    <li><a href="/categories/national/">జాతీయ వార్తలు</a></li>
-                    <li><a href="/categories/international/">అంతర్జాతీయ వార్తలు</a></li>
-                    <li><a href="/categories/sports/">క్రీడలు</a></li>
-                    <li><a href="/admin/" class="admin-link">Admin</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
 
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="/">
+                <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            <i class="bi bi-house me-1"></i>హోమ్
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-grid me-1"></i>వర్గాలు
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/categories/state/">
+                                <i class="bi bi-building me-2"></i>రాష్ట్ర వార్తలు
+                            </a></li>
+                            <li><a class="dropdown-item" href="/categories/national/">
+                                <i class="bi bi-flag me-2"></i>జాతీయ వార్తలు
+                            </a></li>
+                            <li><a class="dropdown-item" href="/categories/international/">
+                                <i class="bi bi-globe me-2"></i>అంతర్జాతీయ వార్తలు
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/categories/sports/">
+                                <i class="bi bi-trophy me-2"></i>క్రీడలు
+                            </a></li>
+                            <li><a class="dropdown-item" href="/categories/cinema/">
+                                <i class="bi bi-camera-reels me-2"></i>సినిమా
+                            </a></li>
+                            <li><a class="dropdown-item" href="/categories/business/">
+                                <i class="bi bi-graph-up me-2"></i>వ్యాపారం
+                            </a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="navbar-nav">
+                    <a class="nav-link btn btn-outline-light btn-sm me-2" href="/admin/">
+                        <i class="bi bi-pencil-square me-1"></i>Admin
+                    </a>
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-translate me-1"></i>భాష
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">తెలుగు</a></li>
+                            <li><a class="dropdown-item" href="#">English</a></li>
+                            <li><a class="dropdown-item" href="#">हिन्दी</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
     <main class="main-content">
         {{ content | safe }}
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <span>మమ్మల్ని ఫోలో చేయండి:</span>
-                <a href="https://facebook.com/YourTeluguNews" class="social-link facebook" target="_blank">Facebook</a>
-                <a href="https://twitter.com/YourTeluguNews" class="social-link twitter" target="_blank">Twitter</a>
-                <a href="https://youtube.com/YourTeluguNews" class="social-link youtube" target="_blank">YouTube</a>
-                <a href="https://t.me/YourTeluguNews" class="social-link telegram" target="_blank">Telegram</a>
-                <a href="https://api.whatsapp.com/send?text=తెలుగు వార్తలు - {{ site.url }}" class="social-link whatsapp" target="_blank">WhatsApp</a>
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+                    </h5>
+                    <p class="text-light-50">
+                        తాజా తెలుగు వార్తలు, బ్రేకింగ్ న్యూస్, రాష్ట్ర వార్తలు, జాతీయ, అంతర్జాతీయ వార్తలు
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="#" class="btn btn-outline-light btn-sm">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">వార్తా వర్గాలు</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/categories/state/" class="text-light-50 text-decoration-none">రాష్ట్ర వార్తలు</a></li>
+                        <li><a href="/categories/national/" class="text-light-50 text-decoration-none">జాతీయ వార్తలు</a></li>
+                        <li><a href="/categories/international/" class="text-light-50 text-decoration-none">అంతర్జాతీయ వార్తలు</a></li>
+                        <li><a href="/categories/sports/" class="text-light-50 text-decoration-none">క్రీడలు</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">లింకులు</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/about/" class="text-light-50 text-decoration-none">మా గురించి</a></li>
+                        <li><a href="/contact/" class="text-light-50 text-decoration-none">సంప్రదించండి</a></li>
+                        <li><a href="/privacy/" class="text-light-50 text-decoration-none">గోప్యతా నీతి</a></li>
+                        <li><a href="/terms/" class="text-light-50 text-decoration-none">నియమాలు & షరతులు</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">వార్తాలేఖ</h6>
+                    <p class="text-light-50 small mb-3">తాజా వార్తలను మిస్ చేయకండి</p>
+                    <form class="newsletter-form">
+                        <div class="input-group input-group-sm">
+                            <input type="email" class="form-control" placeholder="మీ ఈమెయిల్" required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-send"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <p>&copy; 2024 తెలుగు వార్తలు. అన్ని హక్కులు రక్షించబడినవి.</p>
+            
+            <hr class="border-secondary">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2024 తెలుగు వార్తలు. అన్ని హక్కులు రక్షించబడినవి.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <span class="text-warning">★</span> 
+                        తెలుగు జనాలకు తెలుగు వార్తలు
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- Social Share Script -->
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/js/marketing.js"></script>
     <script src="/js/social-share.js"></script>
+    
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>
