@@ -113,16 +113,117 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Header Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow">
+            <div class="container">
+                <a class="navbar-brand fw-bold fs-3" href="/">
+                    <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
     <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="/">
-                <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+      <div class="container">
+        <a class="navbar-brand fw-bold fs-3" href="/">
+          <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <!-- For mobile show only, for desktop show full links -->
+            <li class="nav-item d-block d-lg-none">
+              <a class="nav-link active" href="/">
+                <i class="bi bi-house me-1"></i>హోమ్
+              </a>
+            </li>
+    
+            <li class="nav-item dropdown d-block d-lg-none">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-grid me-1"></i>వర్గాలు
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/categories/state/">
+                  <i class="bi bi-building me-2"></i>రాష్ట్ర వార్తలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/national/">
+                  <i class="bi bi-flag me-2"></i>జాతీయ వార్తలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/international/">
+                  <i class="bi bi-globe me-2"></i>అంతర్జాతీయ వార్తలు
+                </a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/categories/sports/">
+                  <i class="bi bi-trophy me-2"></i>క్రీడలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/cinema/">
+                  <i class="bi bi-camera-reels me-2"></i>సినిమా
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/business/">
+                  <i class="bi bi-graph-up me-2"></i>వ్యాపారం
+                </a></li>
+              </ul>
+            </li>
+    
+            <!-- Full menu visible on desktop -->
+            <li class="nav-item d-none d-lg-block">
+              <a class="nav-link active" href="/">
+                <i class="bi bi-house me-1"></i>హోమ్
+              </a>
+            </li>
+    
+            <li class="nav-item dropdown d-none d-lg-block">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-grid me-1"></i>వర్గాలు
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/categories/state/">
+                  <i class="bi bi-building me-2"></i>రాష్ట్ర వార్తలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/national/">
+                  <i class="bi bi-flag me-2"></i>జాతీయ వార్తలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/international/">
+                  <i class="bi bi-globe me-2"></i>అంతర్జాతీయ వార్తలు
+                </a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/categories/sports/">
+                  <i class="bi bi-trophy me-2"></i>క్రీడలు
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/cinema/">
+                  <i class="bi bi-camera-reels me-2"></i>సినిమా
+                </a></li>
+                <li><a class="dropdown-item" href="/categories/business/">
+                  <i class="bi bi-graph-up me-2"></i>వ్యాపారం
+                </a></li>
+              </ul>
+            </li>
+          </ul>
+    
+          <div class="navbar-nav">
+            <a class="nav-link btn btn-outline-light btn-sm me-2" href="/admin/">
+              <i class="bi bi-pencil-square me-1"></i>Admin
             </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
+            <div class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-translate me-1"></i>భాష
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">తెలుగు</a></li>
+                <li><a class="dropdown-item" href="#">English</a></li>
+                <li><a class="dropdown-item" href="#">हिन्दी</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
@@ -175,7 +276,7 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- Main Content -->
     <main class="main-content">
