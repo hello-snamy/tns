@@ -25,12 +25,6 @@ body {
     padding: 1rem 0;
 }
 
-.navbar-brand {
-    font-weight: bold;
-    color: #2c5aa0;
-    text-decoration: none;
-}
-
 .nav-item a {
     font-weight: bold;
     color: #2c5aa0;
