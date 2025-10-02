@@ -25,45 +25,13 @@ body {
     padding: 1rem 0;
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-logo a {
+.nav-brand {
     font-size: 1.8rem;
     font-weight: bold;
     color: #2c5aa0;
     text-decoration: none;
 }
 
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav-menu a:hover {
-    color: #2c5aa0;
-}
-
-.admin-link {
-    background: #2c5aa0;
-    color: white !important;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-}
 
 /* Hero Section */
 .hero {
@@ -931,3 +899,5 @@ footer a.text-light-50:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #1e3a8a;
 }
+
+
