@@ -5,7 +5,6 @@ date: 2024-01-06T10:00:00+05:30
 image: /images/sports-news.jpg
 categories: ["sports"]
 layout: news
-permalink: /news/{{ title | slug }}/
 seo:
   meta_title: "ఐపీఎల్ 2024: కొత్త టీమ్లు, కొత్త నియమాలు"
   meta_description: "ఆంధ్రప్రదేశ్లో కొత్త అభివృద్ధి ప్రాజెక్ట్ ప్రారంభం, వేలాది ఉద్యోగాలు"
