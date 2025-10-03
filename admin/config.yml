@@ -7,6 +7,10 @@ backend:
     delete: 'Delete {{collection}} "{{slug}}"'
     uploadMedia: 'Upload "{{path}}"'
     deleteMedia: 'Delete "{{path}}"'
+  repo: hello-snamy/tns
+  base_url: http://localhost:3000
+  auth_endpoint: auth/github
+  
   # name: github
   # repo: hello-snamy/tns
   # branch: main
