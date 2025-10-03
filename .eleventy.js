@@ -82,9 +82,11 @@ module.exports = function(eleventyConfig) {
             layouts: "_layouts",
             data: "_data"
         },
+        pathPrefix: "/tns/", // Add this for GitHub Pages subdirectory        
         templateFormats: ["md", "njk", "html", "liquid"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
-        dataTemplateEngine: "njk"
+        dataTemplateEngine: "njk",
+        passthroughFileCopy: true        
     };
 };
