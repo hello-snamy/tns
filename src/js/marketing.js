@@ -335,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Service Worker for Push Notifications
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/tns/sw.js')
+    navigator.serviceWorker.register('/sw.js')
         .then(registration => {
             console.log('Service Worker registered:', registration);
         })
