@@ -105,7 +105,12 @@ module.exports = function(eleventyConfig) {
             return item.data.categories && item.data.categories.includes("business");
         });
     });    
-    
+
+    // Add this filter to your existing .eleventy.js
+    eleventyConfig.addFilter("excludeCurrent", function(posts, currentUrl) {
+        return posts.filter(post => post.url !== currentUrl);
+    });
+
     return {
         dir: {
             input: "src",
