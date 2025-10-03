@@ -1,0 +1,59 @@
+---
+layout: base
+title: అంతర్జాతీయ వార్తలు
+description: ప్రపంచ వార్తలు, అంతర్జాతీయ సంబంధాలు, గ్లోబల్ ఇవెంట్స్
+permalink: /categories/international/
+---
+
+<section class="category-header bg-info bg-gradient text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="display-5 fw-bold mb-3">అంతర్జాతీయ వార్తలు</h1>
+                <p class="lead mb-0">ప్రపంచ వార్తలు, అంతర్జాతీయ సంబంధాలు, గ్లోబల్ ఇవెంట్స్</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="bi bi-globe-asia-australia display-1"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="category-news py-5">
+    <div class="container">
+        <div class="row">
+            {% set internationalNews = collections.news | filterByCategory("international") %}
+            {% for post in internationalNews %}
+            <div class="col-lg-6 mb-4">
+                <div class="card news-card h-100 border-0 shadow-sm">
+                    {% if post.data.image %}
+                    <img src="{{ post.data.image | url }}" class="card-img-top" alt="{{ post.data.title }}" style="height: 200px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <a href="{{ post.url | url }}" class="text-decoration-none text-dark">{{ post.data.title }}</a>
+                        </h5>
+                        <p class="card-text text-muted flex-grow-1">{{ post.data.description }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="bi bi-clock me-1"></i>
+                                {{ post.date | readableDate }}
+                            </small>
+                            <span class="badge bg-info">అంతర్జాతీయ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="col-12 text-center py-5">
+                <div class="empty-state">
+                    <i class="bi bi-globe display-1 text-muted mb-3"></i>
+                    <h3 class="text-muted">ఇంకా అంతర్జాతీయ వార్తలు లేవు</h3>
+                    <p class="text-muted">మొదటి అంతర్జాతీయ వార్తను సేర్చడానికి అడ్మిన్ పేజీకి వెళ్లండి</p>
+                    <a href="{{ '/admin/' | url }}" class="btn btn-info">వార్తలు సేర్చండి</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
