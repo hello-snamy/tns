@@ -1,20 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Content Manager</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telugu News CMS</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-  <script>
-    // Dynamically load Decap CMS script
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js";
-    script.onload = function () {
-      // Once CMS is loaded, initialize it
-      CMS.init();  // CMS is now defined
-    };
-    document.body.appendChild(script);  // ✅ safe to append to body now
-  </script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
