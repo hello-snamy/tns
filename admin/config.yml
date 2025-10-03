@@ -1,8 +1,14 @@
 backend:
-  name: github
-  repo: hello-snamy/tns
+  name: git-gateway
   branch: main
-  base_url: https://hello-snamy.github.io/tns
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+  repo: hello-snamy/tns
+  auth_scope: repo  # Permissions required for the CMS to authenticate  
 media_folder: "src/images"
 public_folder: "/images"
 
