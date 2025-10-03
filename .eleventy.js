@@ -9,7 +9,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPlugin(pluginSEO, {
         title: "తెలుగు వార్తలు",
         description: "తాజా తెలుగు వార్తలు, బ్రేకింగ్ న్యూస్",
-        url: "https://hello-snamy.github.io/tns",
+        url: "https://teluguudayam.com",
         author: "Telugu News Team",
         twitter: "telugunews",
         image: "/images/og-image.jpg"
@@ -17,7 +17,7 @@ module.exports = function(eleventyConfig) {
 
     eleventyConfig.addPlugin(sitemap, {
         sitemap: {
-            hostname: "https://hello-snamy.github.io/tns",
+            hostname: "https://teluguudayam.com",
         },
     });
 
@@ -50,7 +50,7 @@ module.exports = function(eleventyConfig) {
     
     // Add this filter for absolute URLs
     eleventyConfig.addFilter("absoluteUrl", (url) => {
-        const siteUrl = process.env.URL || "https://hello-snamy.github.io/tns";
+        const siteUrl = process.env.URL || "https://teluguudayam.com";
         return new URL(url, siteUrl).toString();
     });
 
@@ -119,7 +119,6 @@ module.exports = function(eleventyConfig) {
             layouts: "_layouts",
             data: "_data"
         },
-        pathPrefix: "/tns/", // Add this for GitHub Pages subdirectory        
         templateFormats: ["md", "njk", "html", "liquid"],
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
