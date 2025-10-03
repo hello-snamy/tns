@@ -13,7 +13,7 @@ marketing:
   exclusive: true
   sponsored: true
 layout: news
-permalink: /news/{{ title | slug }}/
+permalink: /news/{{ date | date: "%Y/%m/%d" }}/{{ title | slug }}/
 seo:
   meta_title: "ఆంధ్రప్రదేశ్ అభివృద్ధి ప్రాజెక్ట్ - తాజా వార్తలు"
   meta_description: "ఆంధ్రప్రదేశ్లో కొత్త అభివృద్ధి ప్రాజెక్ట్ ప్రారంభం, వేలాది ఉద్యోగాలు"
