@@ -3,103 +3,298 @@ layout: base
 ---
 
 <article class="news-article">
-    <header class="article-header">
-        <h1 class="article-title">{{ title }}</h1>
-        <div class="article-meta">
-            <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
-            {% if categories %}
-            <span class="categories">
-                {% for category in categories %}
-                <a href="/tns/categories/{{ category }}/" class="category-tag">{{ category }}</a>
-                {% endfor %}
-            </span>
-            {% endif %}
+    <!-- Article Header -->
+    <header class="article-header bg-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Breadcrumb -->
+                    <nav aria-label="breadcrumb" class="mb-4">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ '/' | url }}" class="text-decoration-none">
+                                <i class="bi bi-house me-1"></i>హోమ్
+                            </a></li>
+                            <li class="breadcrumb-item"><a href="{{ '/news/' | url }}" class="text-decoration-none">వార్తలు</a></li>
+                            {% if categories %}
+                            <li class="breadcrumb-item active text-capitalize">{{ categories[0] }}</li>
+                            {% endif %}
+                        </ol>
+                    </nav>
+
+                    <!-- Article Title -->
+                    <h1 class="article-title display-4 fw-bold text-dark mb-4">{{ title }}</h1>
+
+                    <!-- Article Meta -->
+                    <div class="article-meta d-flex flex-wrap align-items-center gap-4 mb-4">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-calendar3 text-primary me-2"></i>
+                            <time datetime="{{ date | isoDate }}" class="text-muted">{{ date | readableDate }}</time>
+                        </div>
+                        
+                        {% if categories %}
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-tag text-primary me-2"></i>
+                            <div class="categories">
+                                {% for category in categories %}
+                                <a href="{{ '/categories/' | url }}{{ category }}/" class="badge bg-primary text-decoration-none me-1 text-capitalize">
+                                    {{ category }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-clock text-primary me-2"></i>
+                            <span class="text-muted">5 నిమిషాల చదవడం</span>
+                        </div>
+                    </div>
+
+                    <!-- Featured Image -->
+                    {% if image %}
+                    <div class="article-featured-image mb-4">
+                        <img src="{{ image | url }}" alt="{{ title }}" class="img-fluid rounded-3 shadow-lg w-100" style="max-height: 500px; object-fit: cover;">
+                        {% if image_caption %}
+                        <div class="text-center text-muted mt-2 small">{{ image_caption }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Article Description -->
+                    {% if description %}
+                    <div class="article-description lead text-muted mb-4 p-4 bg-white rounded-3 border">
+                        <i class="bi bi-quote me-2 text-primary"></i>
+                        {{ description }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        {% if image %}
-        <div class="article-image">
-            <img src="{{ image }}" alt="{{ title }}">
-        </div>
-        {% endif %}
     </header>
-    
-    <div class="article-content">
-        {{ content | safe }}
-    </div>
-    
-    <footer class="article-footer">
-        <!-- Enhanced Share Buttons -->
-        <div class="share-section">
-            <h3>ఈ వార్తను షేర్ చేయండి</h3>
-            <div class="share-buttons">
-                <!-- Facebook Share -->
-                <button class="share-btn facebook-share" data-platform="facebook" data-title="{{ title }}" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                    </svg>
-                    Facebook
-                </button>
 
-                <!-- Twitter Share -->
-                <button class="share-btn twitter-share" data-platform="twitter" data-title="{{ title }}" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.016 10.016 0 01-3.127 1.184 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                    </svg>
-                    Twitter
-                </button>
+    <!-- Article Content -->
+    <section class="article-content py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="content-body fs-5 lh-lg">
+                        {{ content | safe }}
+                    </div>
+                </div>
+                
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <!-- Author Info -->
+                    <div class="author-card card border-0 shadow-sm mb-4">
+                        <div class="card-body text-center">
+                            <div class="author-avatar mb-3">
+                                <i class="bi bi-person-circle display-4 text-primary"></i>
+                            </div>
+                            <h6 class="card-title fw-bold">తెలుగు వార్తలు రిపోర్టర్</h6>
+                            <p class="card-text text-muted small">విశేష వార్తా విలేఖరి</p>
+                            <div class="author-social">
+                                <a href="#" class="btn btn-outline-primary btn-sm me-1">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm me-1">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                                <a href="#" class="btn btn-outline-primary btn-sm">
+                                    <i class="bi bi-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- WhatsApp Share -->
-                <button class="share-btn whatsapp-share" data-platform="whatsapp" data-title="{{ title }}" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893-.001-3.189-1.262-6.187-3.55-8.444"/>
-                    </svg>
-                    WhatsApp
-                </button>
+                    <!-- Share Widget -->
+                    <div class="share-widget card border-0 shadow-sm mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h6 class="mb-0">
+                                <i class="bi bi-share me-2"></i>షేర్ చేయండి
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="share-buttons d-grid gap-2">
+                                <button class="btn btn-facebook btn-sm">
+                                    <i class="bi bi-facebook me-2"></i>Facebook
+                                </button>
+                                <button class="btn btn-twitter btn-sm">
+                                    <i class="bi bi-twitter me-2"></i>Twitter
+                                </button>
+                                <button class="btn btn-whatsapp btn-sm">
+                                    <i class="bi bi-whatsapp me-2"></i>WhatsApp
+                                </button>
+                                <button class="btn btn-link btn-sm" onclick="copyArticleLink()">
+                                    <i class="bi bi-link-45deg me-2"></i>లింక్ కాపీ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
-                <!-- Telegram Share -->
-                <button class="share-btn telegram-share" data-platform="telegram" data-title="{{ title }}" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.192l-1.818 8.569c-.129.578-.472.719-.958.447l-2.658-1.958-1.284 1.238c-.143.143-.264.264-.54.264l.189-2.722 4.937-4.466c.216-.191-.047-.297-.334-.107l-6.107 3.849-2.634-.821c-.574-.182-.587-.574.12-.85l10.326-3.977c.478-.161.896.133.74.85z"/>
-                    </svg>
-                    Telegram
-                </button>
-
-                <!-- LinkedIn Share -->
-                <button class="share-btn linkedin-share" data-platform="linkedin" data-title="{{ title }}" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                    LinkedIn
-                </button>
-
-                <!-- Copy Link -->
-                <button class="share-btn copy-link" data-platform="copy" data-url="{{ page.url | absoluteUrl }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-                    </svg>
-                    లింక్ కాపీ
-                </button>
-            </div>
-            
-            <!-- Share Counts (Optional) -->
-            <div class="share-counts">
-                <span class="share-count" data-url="{{ page.url | absoluteUrl }}">
-                    <strong>0</strong> షేర్లు
-                </span>
+                    <!-- Related Articles -->
+                    {% set relatedPosts = collections.news | filterByCategory(categories[0]) | excludeCurrent(url) | slice(0, 3) %}
+                    {% if relatedPosts.length > 0 %}
+                    <div class="related-articles card border-0 shadow-sm">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">
+                                <i class="bi bi-newspaper me-2"></i>సంబంధిత వార్తలు
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            {% for post in relatedPosts %}
+                            <div class="related-item mb-3 pb-3 {% if not loop.last %}border-bottom{% endif %}">
+                                <h6 class="related-title mb-2">
+                                    <a href="{{ post.url | url }}" class="text-decoration-none text-dark small">
+                                        {{ post.data.title }}
+                                    </a>
+                                </h6>
+                                <small class="text-muted">
+                                    <i class="bi bi-clock me-1"></i>
+                                    {{ post.date | readableDate }}
+                                </small>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Floating Share Buttons for Mobile -->
-        <div class="floating-share">
-            <button class="floating-share-btn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                </svg>
-            </button>
-            <div class="floating-share-options">
-                <button class="floating-option facebook-share" data-platform="facebook">FB</button>
-                <button class="floating-option twitter-share" data-platform="twitter">TW</button>
-                <button class="floating-option whatsapp-share" data-platform="whatsapp">WA</button>
+    <!-- Article Footer -->
+    <footer class="article-footer py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <!-- Tags -->
+                    {% if categories %}
+                    <div class="tags-section mb-4">
+                        <h6 class="fw-bold mb-3">
+                            <i class="bi bi-tags me-2"></i>ట్యాగ్లు
+                        </h6>
+                        <div class="tags">
+                            {% for category in categories %}
+                            <a href="{{ '/categories/' | url }}{{ category }}/" class="btn btn-outline-secondary btn-sm me-2 mb-2 text-capitalize">
+                                #{{ category }}
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- Navigation -->
+                    <div class="article-navigation d-flex justify-content-between align-items-center pt-4 border-top">
+                        <div>
+                            <a href="{{ '/news/' | url }}" class="btn btn-outline-primary">
+                                <i class="bi bi-arrow-left me-2"></i>తిరిగి వార్తలకు
+                            </a>
+                        </div>
+                        <div class="social-share-mobile d-lg-none">
+                            <button class="btn btn-primary btn-sm" onclick="shareArticle()">
+                                <i class="bi bi-share me-1"></i>షేర్
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 </article>
+
+<!-- Newsletter Subscription -->
+<section class="newsletter-cta py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-6">
+                <h4 class="fw-bold mb-3">తాజా వార్తలను మిస్ చేయకండి</h4>
+                <p class="mb-4">రోజువారీ తెలుగు వార్తలు మీ ఇన్బ�ాక్స్‌లో పొందండి</p>
+                <form class="newsletter-form">
+                    <div class="input-group input-group-lg">
+                        <input type="email" class="form-control" placeholder="మీ ఈమెయిల్ చిరునామా" required>
+                        <button class="btn btn-light text-primary" type="submit">
+                            <i class="bi bi-send me-2"></i>చందా పొందండి
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+function copyArticleLink() {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url).then(() => {
+        // Show success message
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check2 me-2"></i>కాపీ అయ్యింది!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    });
+}
+
+function shareArticle() {
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ title }}',
+            text: '{{ description }}',
+            url: window.location.href,
+        })
+        .catch(console.error);
+    } else {
+        copyArticleLink();
+    }
+}
+
+// Social sharing functions
+document.addEventListener('DOMContentLoaded', function() {
+    // Facebook Share
+    document.querySelector('.btn-facebook')?.addEventListener('click', function() {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+        window.open(url, '_blank', 'width=600,height=400');
+    });
+
+    // Twitter Share
+    document.querySelector('.btn-twitter')?.addEventListener('click', function() {
+        const text = `{{ title }} - తెలుగు వార్తలు`;
+        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
+        window.open(url, '_blank', 'width=600,height=400');
+    });
+
+    // WhatsApp Share
+    document.querySelector('.btn-whatsapp')?.addEventListener('click', function() {
+        const text = `{{ title }}\n\n{{ description }}\n\n${window.location.href}`;
+        const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+    });
+
+    // Newsletter form
+    const newsletterForms = document.querySelectorAll('.newsletter-form');
+    newsletterForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            const button = this.querySelector('button[type="submit"]');
+            
+            if (email) {
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>సబ్మిట్ అవుతోంది...';
+                button.disabled = true;
+                
+                setTimeout(() => {
+                    button.innerHTML = '<i class="bi bi-check2 me-2"></i>సబ్‌స్క్రైబ్ చేయబడింది!';
+                    this.reset();
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }, 2000);
+                }, 1000);
+            }
+        });
+    });
+});
+</script>
