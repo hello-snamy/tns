@@ -1,5 +1,5 @@
 backend:
-  name: github
+  name: git-gateway
   repo: hello-snamy/tns  # Replace with your private GitHub repository name
   branch: main  # The branch to commit content to
   auth_scope: repo  # Permission level for GitHub OAuth (repo scope gives full access)
