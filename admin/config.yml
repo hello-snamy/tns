@@ -8,7 +8,8 @@ backend:
     uploadMedia: 'Upload "{{path}}"'
     deleteMedia: 'Delete "{{path}}"'
   repo: hello-snamy/tns
-  auth_scope: repo  # Permissions required for the CMS to authenticate  
+  auth_scope: repo  # Ensure correct GitHub OAuth scopes or PAT
+
 media_folder: "src/images"
 public_folder: "/images"
 
