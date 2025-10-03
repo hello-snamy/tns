@@ -1,10 +1,10 @@
 const CACHE_NAME = 'telugu-news-v1';
 const urlsToCache = [
-    '/tns/',
-    '/tns/css/style.css',
-    '/tns/css/marketing.css',
-    '/tns/js/marketing.js',
-    '/tns/images/logo.png'
+    '/',
+    '/css/style.css',
+    '/css/marketing.css',
+    '/js/marketing.js',
+    '/images/logo.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -30,8 +30,8 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('push', (event) => {
     const options = {
         body: event.data.text(),
-        icon: '/tns/images/icon-192.png',
-        badge: '/tns/images/badge-72.png',
+        icon: '/images/icon-192.png',
+        badge: '/images/badge-72.png',
         vibrate: [100, 50, 100],
         data: {
             dateOfArrival: Date.now(),
@@ -41,12 +41,12 @@ self.addEventListener('push', (event) => {
             {
                 action: 'explore',
                 title: 'Read More',
-                icon: '/tns/images/icon-72.png'
+                icon: '/images/icon-72.png'
             },
             {
                 action: 'close',
                 title: 'Close',
-                icon: '/tns/images/icon-72.png'
+                icon: '/images/icon-72.png'
             },
         ]
     };
@@ -61,7 +61,7 @@ self.addEventListener('notificationclick', (event) => {
     
     if (event.action === 'explore') {
         event.waitUntil(
-            clients.openWindow('/tns/latest-news')
+            clients.openWindow('/latest-news')
         );
     }
 });
