@@ -12,9 +12,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/tns/css/style.css">
-    <link rel="stylesheet" href="/tns/css/social-share.css">
-    <link rel="stylesheet" href="/tns/css/marketing.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/social-share.css">
+    <link rel="stylesheet" href="/css/marketing.css">
     
     <!-- SEO Meta Tags -->
     <meta property="og:title" content="{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}">
@@ -29,7 +29,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}">
     <meta property="og:description" content="{% if meta_description %}{{ meta_description }}{% else %}{{ description }}{% endif %}">
-    <meta property="og:type" content="{% if page.url == '/tns/' %}website{% else %}article{% endif %}">
+    <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
     <meta property="og:url" content="{{ page.url | absoluteUrl }}">
     <meta property="og:locale" content="te_IN">
     <meta property="og:site_name" content="తెలుగు వార్తలు">
@@ -40,7 +40,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     {% else %}
-    <meta property="og:image" content="{{ '/tns/images/og-default.jpg' | absoluteUrl }}">
+    <meta property="og:image" content="{{ '/images/og-default.jpg' | absoluteUrl }}">
     {% endif %}
     
     <!-- Twitter Card -->
@@ -53,7 +53,7 @@
     {% if image %}
     <meta name="twitter:image" content="{{ image | absoluteUrl }}">
     {% else %}
-    <meta name="twitter:image" content="{{ '/tns/images/twitter-default.jpg' | absoluteUrl }}">
+    <meta name="twitter:image" content="{{ '/images/twitter-default.jpg' | absoluteUrl }}">
     {% endif %}
     
     <!-- Google Tag Manager -->
@@ -67,7 +67,7 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "{% if page.url == '/tns/' %}NewsWebsite{% else %}NewsArticle{% endif %}",
+        "@type": "{% if page.url == '/' %}NewsWebsite{% else %}NewsArticle{% endif %}",
         "headline": "{% if meta_title %}{{ meta_title }}{% else %}{{ title }}{% endif %}",
         "description": "{% if meta_description %}{{ meta_description }}{% else %}{{ description }}{% endif %}",
         "datePublished": "{{ date }}",
@@ -81,7 +81,7 @@
             "name": "తెలుగు వార్తలు",
             "logo": {
                 "@type": "ImageObject",
-                "url": "{{ '/tns/images/logo.png' | absoluteUrl }}"
+                "url": "{{ '/images/logo.png' | absoluteUrl }}"
             }
         },
         "mainEntityOfPage": {
@@ -306,10 +306,10 @@
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Custom JS -->
-    <script src="/tns/js/main.js"></script>
+    <script src="/js/main.js"></script>
     <!-- Custom JS -->
-    <script src="/tns/js/marketing.js"></script>
-    <script src="/tns/js/social-share.js"></script>
+    <script src="/js/marketing.js"></script>
+    <script src="/js/social-share.js"></script>
 
 </body>
 </html>
