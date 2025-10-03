@@ -217,50 +217,58 @@
         {{ content | safe }}
     </main>
 
+
     <!-- Footer -->
     <footer class="bg-dark text-light py-5 mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
                     <h5 class="fw-bold mb-3">
-                        <i class="bi bi-newspaper me-2"></i>తెలుగు వార్తలు
+                        <i class="bi bi-newspaper me-2"></i>{{ home.site_title }}
                     </h5>
                     <p class="text-light-50">
-                        తాజా తెలుగు వార్తలు, బ్రేకింగ్ న్యూస్, రాష్ట్ర వార్తలు, జాతీయ, అంతర్జాతీయ వార్తలు
+                        {{ home.footer.about_text }}
                     </p>
                     <div class="social-links">
-                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                        {% if home.social_links.facebook %}
+                        <a href="{{ home.social_links.facebook }}" class="btn btn-outline-light btn-sm me-2">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                        {% endif %}
+                        {% if home.social_links.twitter %}
+                        <a href="{{ home.social_links.twitter }}" class="btn btn-outline-light btn-sm me-2">
                             <i class="bi bi-twitter"></i>
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-sm me-2">
+                        {% endif %}
+                        {% if home.social_links.youtube %}
+                        <a href="{{ home.social_links.youtube }}" class="btn btn-outline-light btn-sm me-2">
                             <i class="bi bi-youtube"></i>
                         </a>
-                        <a href="#" class="btn btn-outline-light btn-sm">
+                        {% endif %}
+                        {% if home.social_links.telegram %}
+                        <a href="{{ home.social_links.telegram }}" class="btn btn-outline-light btn-sm">
                             <i class="bi bi-telegram"></i>
                         </a>
+                        {% endif %}
                     </div>
                 </div>
                 
                 <div class="col-lg-2 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3">వార్తా వర్గాలు</h6>
                     <ul class="list-unstyled">
-                        <li><a href="/tns/categories/state/" class="text-light-50 text-decoration-none">రాష్ట్ర వార్తలు</a></li>
-                        <li><a href="/tns/categories/national/" class="text-light-50 text-decoration-none">జాతీయ వార్తలు</a></li>
-                        <li><a href="/tns/categories/international/" class="text-light-50 text-decoration-none">అంతర్జాతీయ వార్తలు</a></li>
-                        <li><a href="/tns/categories/sports/" class="text-light-50 text-decoration-none">క్రీడలు</a></li>
+                        {% for category in home.categories.items %}
+                        <li><a href="{{ '/categories/' | url }}{{ category.slug }}/" class="text-light-50 text-decoration-none">{{ category.name }}</a></li>
+                        {% endfor %}
                     </ul>
                 </div>
                 
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h6 class="fw-bold mb-3">లింకులు</h6>
                     <ul class="list-unstyled">
-                        <li><a href="/tns/about/" class="text-light-50 text-decoration-none">మా గురించి</a></li>
-                        <li><a href="/tns/contact/" class="text-light-50 text-decoration-none">సంప్రదించండి</a></li>
-                        <li><a href="/tns/privacy/" class="text-light-50 text-decoration-none">గోప్యతా నీతి</a></li>
-                        <li><a href="/tns/terms/" class="text-light-50 text-decoration-none">నియమాలు & షరతులు</a></li>
+                        <li><a href="/about/" class="text-light-50 text-decoration-none">మా గురించి</a></li>
+                        <li><a href="/contact/" class="text-light-50 text-decoration-none">సంప్రదించండి</a></li>
+                        <li><a href="/privacy/" class="text-light-50 text-decoration-none">గోప్యతా నీతి</a></li>
+                        <li><a href="/terms/" class="text-light-50 text-decoration-none">నియమాలు & షరతులు</a></li>
                     </ul>
                 </div>
                 
@@ -282,17 +290,18 @@
             
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2024 తెలుగు వార్తలు. అన్ని హక్కులు రక్షించబడినవి.</p>
+                    <p class="mb-0">{{ home.footer.copyright }}</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-0">
                         <span class="text-warning">★</span> 
-                        తెలుగు జనాలకు తెలుగు వార్తలు
+                        {{ home.footer.tagline }}
                     </p>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
