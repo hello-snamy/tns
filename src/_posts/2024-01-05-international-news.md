@@ -5,7 +5,6 @@ date: 2024-01-05T10:00:00+05:30
 image: /images/international-news.jpg
 categories: ["international"]
 layout: news
-permalink: /news/{{ title | slug }}/
 seo:
   meta_title: "విజయవాడ లో సాంస్కృతిక ఉత్సవాలు ప్రారంభం"
   meta_description: "ఆంధ్రప్రదేశ్లో కొత్త అభివృద్ధి ప్రాజెక్ట్ ప్రారంభం, వేలాది ఉద్యోగాలు"
