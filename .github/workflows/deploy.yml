@@ -26,6 +26,12 @@ jobs:
         with:
           node-version: '21'
 
+      # Set up environment variables (OAuth credentials)
+      - name: Set up environment variables
+        run: |
+          echo "GITHUB_CLIENT_ID=${{ secrets.CLIENT_ID }}" >> $GITHUB_ENV
+          echo "GITHUB_CLIENT_SECRET=${{ secrets.CLIENT_SECRET }}" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: npm install
 
