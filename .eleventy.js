@@ -74,6 +74,38 @@ module.exports = function(eleventyConfig) {
         });
     });
 
+    // Category filter
+    eleventyConfig.addFilter("filterByCategory", function(posts, category) {
+        return posts.filter(post => {
+            return post.data.categories && post.data.categories.includes(category);
+        });
+    });
+
+ // Individual category collections
+    eleventyConfig.addCollection("internationalNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("international");
+        });
+    });
+    
+    eleventyConfig.addCollection("sportsNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("sports");
+        });
+    });
+    
+    eleventyConfig.addCollection("cinemaNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("cinema");
+        });
+    });
+    
+    eleventyConfig.addCollection("businessNews", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/_posts/*.md").filter(item => {
+            return item.data.categories && item.data.categories.includes("business");
+        });
+    });    
+    
     return {
         dir: {
             input: "src",
