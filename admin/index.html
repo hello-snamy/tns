@@ -7,53 +7,5 @@
     <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
 </head>
 <body>
-    <h1>Decap CMS Admin</h1>
-    <script>
-        if (window.CMS) {
-            CMS.init({
-                config: {
-                    backend: {
-                        name: 'github',
-                        repo: 'hello-snamy/tns',  // Replace with your repo
-                        branch: 'main',  // The branch you use for content
-                    },
-                    media_folder: 'src/images',
-                    public_folder: '/images',
-                    collections: [
-                        {
-                            name: 'news',
-                            label: 'News Articles',
-                            folder: 'src/_posts',
-                            create: true,
-                            slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
-                            fields: [
-                                { name: 'title', label: 'Title', widget: 'string' },
-                                { name: 'description', label: 'Description', widget: 'string' },
-                                { name: 'date', label: 'Date', widget: 'datetime' },
-                                { name: 'image', label: 'Image', widget: 'image' },
-                                { name: 'body', label: 'Body', widget: 'markdown' },
-                                // Add other fields from your config.yml
-                            ]
-                        },
-                        {
-                            name: 'pages',
-                            label: 'Pages',
-                            files: [
-                                { 
-                                    label: 'Home Page',
-                                    name: 'home',
-                                    file: 'src/_data/home.json',
-                                    fields: [
-                                        { label: 'Hero Title', name: 'hero_title', widget: 'string' },
-                                        { label: 'Hero Description', name: 'hero_description', widget: 'text' }
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            });
-        }
-    </script>
 </body>
 </html>
