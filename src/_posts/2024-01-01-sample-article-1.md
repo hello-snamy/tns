@@ -12,6 +12,8 @@ marketing:
   breaking: true
   exclusive: true
   sponsored: true
+layout: news
+permalink: /news/{{ title | slug }}/
 ---
 
 ఆంధ్రప్రదేశ్ రాష్ట్ర ప్రభుత్వం నేడు ఒక ప్రధాన అభివృద్ధి ప్రాజెక్ట్ ప్రారంభించింది. ఈ ప్రాజెక్ట్ ద్వారా రాష్ట్రంలో వేలాది మంది యువతకు ఉపాధి అవకాశాలు సృష్టించబడతాయి.
