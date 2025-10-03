@@ -1,18 +1,18 @@
 backend:
-  name: git-gateway
+  name: github
   repo: hello-snamy/tns  # Replace with your private GitHub repository name
-  branch: main  # The branch to commit content to
-  auth_scope: repo  # Permission level for GitHub OAuth (repo scope gives full access)
-  base_url: https://hello-snamy.github.io/tns
-  oauth:
-    client_id: '${{ secrets.CLIENT_ID }}'  # GitHub OAuth Client ID from GitHub Secrets
-    client_secret: '${{ secrets.CLIENT_SECRET }}'  # GitHub OAuth Client Secret from GitHub Secrets
-  commit_messages:
-    create: 'Create {{collection}} "{{slug}}"'
-    update: 'Update {{collection}} "{{slug}}"'
-    delete: 'Delete {{collection}} "{{slug}}"'
-    uploadMedia: 'Upload "{{path}}"'
-    deleteMedia: 'Delete "{{path}}"'
+  # branch: main  # The branch to commit content to
+  # auth_scope: repo  # Permission level for GitHub OAuth (repo scope gives full access)
+  # base_url: https://hello-snamy.github.io/tns
+  # oauth:
+  #   client_id: '${{ secrets.CLIENT_ID }}'  # GitHub OAuth Client ID from GitHub Secrets
+  #   client_secret: '${{ secrets.CLIENT_SECRET }}'  # GitHub OAuth Client Secret from GitHub Secrets
+  # commit_messages:
+  #   create: 'Create {{collection}} "{{slug}}"'
+  #   update: 'Update {{collection}} "{{slug}}"'
+  #   delete: 'Delete {{collection}} "{{slug}}"'
+  #   uploadMedia: 'Upload "{{path}}"'
+  #   deleteMedia: 'Delete "{{path}}"'
   
 
 media_folder: "src/images"
