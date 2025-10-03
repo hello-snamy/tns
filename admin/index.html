@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <title>Content Manager</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Load Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
 </head>
 <body>
-  <!-- This renders the CMS UI -->
   <script>
-    window.CMS_MANUAL_INIT = true;
-
-    window.addEventListener("DOMContentLoaded", function () {
-      CMS.init();
-    });
+    // Dynamically load Decap CMS script
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js";
+    script.onload = function () {
+      // Once CMS is loaded, initialize it
+      CMS.init();  // CMS is now defined
+    };
+    document.body.appendChild(script);  // ✅ safe to append to body now
   </script>
 </body>
 </html>
