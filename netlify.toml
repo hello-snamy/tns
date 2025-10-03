@@ -1,31 +1,18 @@
-# Site Settings
-title: "తెలుగు వార్తలు - Telugu News"
-description: "తాజా తెలుగు వార్తలు, బ్రేకింగ్ న్యూస్, రాష్ట్ర వార్తలు, జాతీయ, అంతర్జాతీయ వార్తలు"
-url: "https://your-site.netlify.app"
-language: "te"
-author: "Telugu News Team"
+[build]
+  publish = "_site"
+  command = "npm run build"
 
-# Build Settings
-permalink: "/news/{{ title | slug }}/"
-timezone: "Asia/Kolkata"
+[build.environment]
+  NODE_VERSION = "22"
 
-# Collections
-collections:
-  news:
-    output: true
-    permalink: "/news/{{ title | slug }}/"
-  categories:
-    output: false
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
 
-# Default Data
-defaults:
-  - scope:
-      path: ""
-      type: "news"
-    values:
-      layout: "news"
-      tags: "news"
-  - scope:
-      path: ""
-    values:
-      layout: "base"
+[headers]
+  [headers."/admin/*"]
+    [headers."/admin/*".values]
+      X-Frame-Options = "DENY"
+      X-XSS-Protection = "1; mode=block"
+      X-Content-Type-Options = "nosniff"
