@@ -8,8 +8,8 @@ backend:
     uploadMedia: 'Upload "{{path}}"'
     deleteMedia: 'Delete "{{path}}"'
   repo: hello-snamy/tns
-  base_url: ${{ secrets.AUTH_SERVER }}
-  auth_endpoint: auth/github
+  # base_url: ${{ secrets.AUTH_SERVER }}
+  # auth_endpoint: auth/github
   
   # name: github
   # repo: hello-snamy/tns
