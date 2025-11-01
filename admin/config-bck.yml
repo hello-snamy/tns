@@ -1,0 +1,103 @@
+backend:
+  name: github
+  branch: main
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+  repo: hello-snamy/tns
+  base_url: ${{ secrets.AUTH_SERVER }}
+  auth_endpoint: auth/github
+  publish_mode: editorial_workflow
+
+  # name: github
+  # repo: hello-snamy/tns
+  # branch: main
+  # auth_type: implicit
+  # app_id: '${{ secrets.CLIENT_ID }}'  # From your GitHub OAuth App
+  # base_url: https://hello-snamy.github.io/tns
+
+  # name: github
+  # repo: hello-snamy/tns  # Replace with your private GitHub repository name
+  # branch: main  # The branch to commit content to
+  # auth_scope: repo  # Permission level for GitHub OAuth (repo scope gives full access)
+  # base_url: https://hello-snamy.github.io/tns
+  # oauth:
+  #   client_id: '${{ secrets.CLIENT_ID }}'  # GitHub OAuth Client ID from GitHub Secrets
+  #   client_secret: '${{ secrets.CLIENT_SECRET }}'  # GitHub OAuth Client Secret from GitHub Secrets
+  # commit_messages:
+  #   create: 'Create {{collection}} "{{slug}}"'
+  #   update: 'Update {{collection}} "{{slug}}"'
+  #   delete: 'Delete {{collection}} "{{slug}}"'
+  #   uploadMedia: 'Upload "{{path}}"'
+  #   deleteMedia: 'Delete "{{path}}"'
+  
+
+media_folder: "src/images"
+public_folder: "/images"
+
+# Add these fields to your news collection
+collections:
+  - name: "news"
+    label: "News Articles"
+    folder: "src/_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Social Media"
+        name: "social"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Social Media Title", name: "social_title", widget: "string", required: false }
+          - { label: "Social Media Description", name: "social_description", widget: "text", required: false }
+          - { label: "Social Media Image", name: "social_image", widget: "image", required: false }
+      - label: "Categories"
+        name: "categories"
+        widget: "select"
+        multiple: true
+        options: 
+          - { label: "రాష్ట్ర వార్తలు", value: "state" }
+          - { label: "జాతీయ వార్తలు", value: "national" }
+          - { label: "అంతర్జాతీయ వార్తలు", value: "international" }
+          - { label: "క్రీడలు", value: "sports" }
+          - { label: "వ్యవసాయం", value: "agriculture" }
+          - { label: "సినిమా", value: "cinema" }
+          - { label: "వ్యాపారం", value: "business" }
+      - label: "Marketing"
+        name: "marketing"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Featured Article", name: "featured", widget: "boolean", default: false }
+          - { label: "Trending Article", name: "trending", widget: "boolean", default: false }
+          - { label: "Breaking News", name: "breaking", widget: "boolean", default: false }
+          - { label: "Exclusive Content", name: "exclusive", widget: "boolean", default: false }
+          - { label: "Sponsored Content", name: "sponsored", widget: "boolean", default: false }
+          - { label: "Ad Campaign ID", name: "ad_campaign", widget: "string", required: false }
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - { label: "Meta Title", name: "meta_title", widget: "string", required: false }
+          - { label: "Meta Description", name: "meta_description", widget: "text", required: false }
+          - { label: "Keywords", name: "keywords", widget: "string", required: false }
+
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "src/_data/home.json"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Description", name: "hero_description", widget: "text" }
+          - { label: "Featured News", name: "featured_news", widget: "list", fields: [{label: "News ID", name: "id", widget: "string"}] }
